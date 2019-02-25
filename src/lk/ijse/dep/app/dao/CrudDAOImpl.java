@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class CrudDAOImpl<T extends SuperEntity, ID extends Serializable> implements CrudDAO<T, ID> {
 
-    private EntityManager em;
+    protected EntityManager em;
     private Class<T> entity;
 
     public CrudDAOImpl(){

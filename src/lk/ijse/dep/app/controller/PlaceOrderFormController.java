@@ -229,7 +229,8 @@ public class PlaceOrderFormController {
             orderDetailDTOS.add(new OrderDetailDTO(item.getCode(), item.getDescription(), item.getQty(), item.getUnitPrice()));
         }
         try {
-            manageOrdersBO.createOrder(new OrderDTO(txtOrderID.getText(), txtOrderDate.getValue(), txtCustomerId.getText(), orderDetailDTOS));
+            CustomerDTO customer = manageCustomersBO.findCustomer(txtCustomerId.getText());
+            manageOrdersBO.createOrder(new OrderDTO(txtOrderID.getText(), txtOrderDate.getValue(), customer, orderDetailDTOS));
         } catch (Exception e) {
             Logger.getLogger("").log(Level.SEVERE, null, e);
         }
